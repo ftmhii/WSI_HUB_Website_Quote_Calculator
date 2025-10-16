@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>WSIHUB Quote Calculator</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: Arial, sans-serif; padding: 1rem; max-width: 900px; margin: auto; }
+    label { display:block; margin: 0.6rem 0 0.2rem; }
+    .row { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+    .box { border:1px solid #ddd; padding: 1rem; margin: .5rem 0; border-radius:6px; }
+    .hidden { display:none; }
+    .small { font-size:0.9rem; color:#555; }
+    #price-display { font-size:1.25rem; margin-top:1rem; font-weight:700; }
+    button { margin-top:0.75rem; padding:0.5rem 1rem; }
+  </style>
+</head>
+<body>
+  <h1>WSIHUB Quote Calculator</h1>
+
+  <div class="box">
+    <label for="currency">Currency</label>
+    <select id="currency" aria-label="Currency">
+      <option value="usd">USD</option>
+      <option value="cad">CAD</option>
+    </select>
+
+    <label for="platform">Platform</label>
+    <select id="platform" aria-label="Platform">
+      <option value="wordpress">WordPress</option>
+      <option value="wix">Wix</option>
+    </select>
+  </div>
+
+  <!-- WordPress options -->
+  <div id="wordpress-options" class="box">
+    <h2>WordPress</h2>
+
+    <label for="pages">Number of pages (site)</label>
+    <input id="pages" type="number" min="1" value="1" />
+
+    <div class="row">
+      <label><input id="logo-design" type="checkbox" /> Logo design (+)</label>
+      <label><input id="site-recaptcha" type="checkbox" /> Site reCAPTCHA</label>
+      <label><input id="popup-window" type="checkbox" /> Popup window</label>
+      <label class="cad-only small"><input id="ada-widget" type="checkbox" /> ADA widget (CAD only)</label>
+    </div>
+
+    <div id="content-writing-pages-input">
+      <label for="content-pages">Content writing package</label>
+      <select id="content-pages">
+        <option value="0">None</option>
+        <option value="5">5 pages — 300 USD / 400 CAD</option>
+        <option value="10">10 pages — 600 USD / 800 CAD</option>
+        <option value="15">15 pages — 900 USD / 1200 CAD</option>
+        <option value="20">20 pages — 1200 USD / 1600 CAD</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="bilingual-option">Bilingual option</label>
+      <select id="bilingual-option">
+        <option value="none">None</option>
+        <option value="google-translate">Google Translate (+100)</option>
+        <option value="provided-content">Provided content (per page)</option>
+      </select>
+      <div id="bilingual-pages-input" class="hidden">
+        <label for="bilingual-pages">Number of bilingual pages</label>
+        <input id="bilingual-pages" type="number" min="0" value="0" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Wix options -->
+  <div id="wix-options" class="box hidden">
+    <h2>Wix</h2>
+
+    <label for="wix-pages">Number of pages (site)</label>
+    <input id="wix-pages" type="number" min="1" value="1" />
+
+    <div class="row">
+      <label><input id="wix-logo-design" type="checkbox" /> Logo design (+)</label>
+      <label><input id="wix-site-recaptcha" type="checkbox" /> Site reCAPTCHA</label>
+      <label><input id="wix-popup-window" type="checkbox" /> Popup window</label>
+      <label id="wix-ada-widget-group" class="cad-only small"><input id="wix-ada-widget" type="checkbox" /> ADA widget (CAD only)</label>
+    </div>
+
+    <div id="wix-content-writing-pages-input">
+      <label for="wix-content-pages">Content writing package</label>
+      <select id="wix-content-pages">
+        <option value="0">None</option>
+        <option value="5">5 pages — 300 USD / 400 CAD</option>
+        <option value="10">10 pages — 600 USD / 800 CAD</option>
+        <option value="15">15 pages — 900 USD / 1200 CAD</option>
+        <option value="20">20 pages — 1200 USD / 1600 CAD</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="wix-bilingual-option">Bilingual option</label>
+      <select id="wix-bilingual-option">
+        <option value="none">None</option>
+        <option value="google-translate">Google Translate (+100)</option>
+        <option value="provided-content">Provided content (per page)</option>
+      </select>
+      <div id="wix-bilingual-pages-input" class="hidden">
+        <label for="wix-bilingual-pages">Number of bilingual pages</label>
+        <input id="wix-bilingual-pages" type="number" min="0" value="0" />
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <button id="calculate-btn">Calculate</button>
+    <div id="price-display">—</div>
+  </div>
+
+  <script src="quote-calculator.js"></script>
+</body>
+</html>
